@@ -1,15 +1,29 @@
+import { useState } from "react";
+
 import { ResturantCard } from "./ResturantCard";
 import { resturants } from "../data";
 
-export const Body = () => {
+const Body = () => {
+  const [topRatedResturants, setTopRatedResturants] = useState(resturants);
+
+  function filterBtnClickHandler() {
+    setTopRatedResturants(
+      resturants.filter((resturant) => resturant.rating > 3)
+    );
+  }
+
   return (
     <div className="body">
-      <div className="search"></div>
+      <div className="filter-btn">
+        <button onClick={filterBtnClickHandler}> Find Yummy Foods </button>
+      </div>
       <div className="rest-container">
-        {resturants.map((resturant, index) => (
+        {topRatedResturants.map((resturant, index) => (
           <ResturantCard key={index} {...resturant} />
         ))}
       </div>
     </div>
   );
 };
+
+export default Body;
