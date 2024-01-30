@@ -77,3 +77,9 @@
 .rest-card img {
   height: 72px;
 }
+
+.footer ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
