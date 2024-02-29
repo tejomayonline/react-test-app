@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
+import useIsUserOnline from "../utils/useIsUserOnline";
 
 export const Header = () => {
+  const isUserOnline = useIsUserOnline();
+
   return (
     <div className="header">
       <div>
@@ -10,6 +13,9 @@ export const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>
+            <div> User is {isUserOnline ? "🟢" : "🔴"}</div>
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>
