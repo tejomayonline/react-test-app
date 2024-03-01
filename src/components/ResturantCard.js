@@ -9,3 +9,22 @@ export const ResturantCard = ({ name, rating, cuisines, imgSrc }) => {
     </div>
   );
 };
+
+export const resturantCardPromoted = (ResturantCard) => {
+  return (props) => {
+    return (
+      <div className="promoted-card">
+        <label className="absolute text-white bg-black p-2 m-2 rounded">
+          Promoted
+        </label>
+        <ResturantCard {...props} />
+      </div>
+    );
+  };
+};
+
+// position: absolute;
+//     color: white;
+//     background: black;
+//     padding: 2px;
+//     border-radius: 10%;

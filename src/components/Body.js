@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 
-import { ResturantCard } from "./ResturantCard";
+import { ResturantCard, resturantCardPromoted } from "./ResturantCard";
 import { resturants } from "../data";
 
 const Body = () => {
   const [topRatedResturants, setTopRatedResturants] = useState([]);
   const [filteredResturants, setFilteredResturants] = useState([]);
   const [inputText, setInputText] = useState("");
+
+  const ResturantCardPromoted = resturantCardPromoted(ResturantCard);
 
   useEffect(() => {
     const timeout = fetchData();
@@ -61,9 +63,13 @@ const Body = () => {
       </div>
 
       <div className="rest-container flex flex-row flex-wrap mt-8 justify-center">
-        {filteredResturants.map((resturant, index) => (
-          <ResturantCard key={index} {...resturant} />
-        ))}
+        {filteredResturants.map((resturant, index) =>
+          resturant.promoted ? (
+            <ResturantCardPromoted key={index} {...resturant} />
+          ) : (
+            <ResturantCard key={index} {...resturant} />
+          )
+        )}
       </div>
     </div>
   );
