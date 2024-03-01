@@ -27,18 +27,23 @@ const Body = () => {
   };
 
   return (
-    <div className="body">
-      <div className="search-bar">
-        <div className="filter-btn">
-          <button onClick={filterBtnClickHandler}> Find Yummy Foods </button>
-        </div>
-        <div>
+    <div className="body flex flex-col">
+      <div className="search-bar flex flex-row justify-around mt-4">
+        <button
+          className="filter-btn bg-cyan-400 p-1 text-white font-semibold"
+          onClick={filterBtnClickHandler}
+        >
+          Find Yummy Foods
+        </button>
+        <div className="flex flex-row justify-around">
           <input
+            className="border-cyan-500 border-2 p-1"
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
           />
           <button
+            className="text-cyan-500 font-semibold border-cyan-500 border-2 p-1"
             onClick={() => {
               const searchedResturants = topRatedResturants.filter(
                 (resturant) => {
@@ -50,12 +55,12 @@ const Body = () => {
               setFilteredResturants(searchedResturants);
             }}
           >
-            submit{" "}
+            submit
           </button>
         </div>
       </div>
 
-      <div className="rest-container">
+      <div className="rest-container flex flex-row flex-wrap mt-8 justify-center">
         {filteredResturants.map((resturant, index) => (
           <ResturantCard key={index} {...resturant} />
         ))}
