@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { ResturantCard, resturantCardPromoted } from "./ResturantCard";
 import { resturants } from "../data";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [topRatedResturants, setTopRatedResturants] = useState([]);
   const [filteredResturants, setFilteredResturants] = useState([]);
   const [inputText, setInputText] = useState("");
-
-  const ResturantCardPromoted = resturantCardPromoted(ResturantCard);
-
   useEffect(() => {
     const timeout = fetchData();
     return () => clearTimeout(timeout);
   }, []);
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
+  const ResturantCardPromoted = resturantCardPromoted(ResturantCard);
   const fetchData = () => {
     return setTimeout(() => {
       setTopRatedResturants(resturants);
@@ -60,6 +61,12 @@ const Body = () => {
             submit
           </button>
         </div>
+        <input
+          type="text"
+          className="border border-solid border-black"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        ></input>
       </div>
 
       <div className="rest-container flex flex-row flex-wrap mt-8 justify-center">

@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 
 import logo from "../logo.svg";
 import useIsUserOnline from "../utils/useIsUserOnline";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 export const Header = () => {
   const isUserOnline = useIsUserOnline();
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="header flex flex-row justify-between border-l-zinc-900 border-solid border-b-2">
@@ -28,6 +31,7 @@ export const Header = () => {
         <button className="button bg-sky-500 hover:bg-sky-700 px-4 py-2 m-4 font-white">
           Login
         </button>
+        <li className="p-4">{loggedInUser}</li>
       </ul>
     </div>
   );

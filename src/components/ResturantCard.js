@@ -26,9 +26,3 @@ export const resturantCardPromoted = (ResturantCard) => {
     );
   };
 };
-
-// position: absolute;
-//     color: white;
-//     background: black;
-//     padding: 2px;
-//     border-radius: 10%;
