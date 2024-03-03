@@ -8,7 +8,9 @@ export const Header = () => {
 
   return (
     <div className="header flex flex-row justify-between border-l-zinc-900 border-solid border-b-2">
-      <img className="logo w-20" src={logo} alt="logo" />
+      <Link to="/">
+        <img className="logo w-20" src={logo} alt="logo" />
+      </Link>
       <ul className="nav-items flex flex-row items-center">
         <li className="p-4 ">
           <div> User is {isUserOnline ? "🟢" : "🔴"}</div>
